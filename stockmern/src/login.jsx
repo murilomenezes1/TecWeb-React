@@ -63,7 +63,7 @@ export default class Login extends Component{
 
 		login(){
 			console.log(this.state.user)
-			axios.post('https://tecweb-demo.herokuapp.com/login', this.state.user).then(resp =>{
+			axios.post('https://stockmern-backend.herokuapp.com/login', this.state.user).then(resp =>{
 				if(Math.floor(resp.status/100)===2 && resp.data.login === true){
 					this.setState((state) =>{
 						return {
