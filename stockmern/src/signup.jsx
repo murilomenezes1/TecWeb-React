@@ -55,7 +55,7 @@ export default class Signup extends Component{
 	}
 
 		signup(){
-			axios.post('http://localhost:3000/signup', this.state.user).then(resp =>{
+			axios.post('https://stockmern-react.herokuapp.com/signup', this.state.user).then(resp =>{
 				if(Math.floor(resp.status/100)===2){
 					this.setState((state) =>{
 						return {
