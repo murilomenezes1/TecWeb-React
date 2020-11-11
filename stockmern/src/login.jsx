@@ -50,7 +50,7 @@ export default class Login extends Component{
 
 
 					<button onClick={this.login}> Login </button>
-						<form action = '/signup'>
+						<form action = 'https://stockmern-react.herokuapp.com/signup'>
 					<input type="submit" value="Sign Up" />
 						</form>
 					</ul>
@@ -63,7 +63,7 @@ export default class Login extends Component{
 
 		login(){
 			console.log(this.state.user)
-			axios.post('http://localhost:3000/login', this.state.user).then(resp =>{
+			axios.post('https://tecweb-demo.herokuapp.com/login', this.state.user).then(resp =>{
 				if(Math.floor(resp.status/100)===2 && resp.data.login === true){
 					this.setState((state) =>{
 						return {
