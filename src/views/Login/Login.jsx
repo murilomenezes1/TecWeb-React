@@ -53,6 +53,7 @@ export default class Login extends Component {
         console.log(this.state.user);
         api.post('users/signin', this.state.user)
             .then((resp) => {
+                console.log(resp.data.login)
                 if (
                     Math.floor(resp.status / 100) === 2 &&
                     resp.data.login === true

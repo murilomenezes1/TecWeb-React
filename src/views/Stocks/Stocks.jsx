@@ -14,7 +14,9 @@ export default class Stocks extends Component {
             stock: '',
             searching: false,
             previsaoDeFechamento: '',
-            lista_de_noticias: []
+            lista_de_noticias: [],
+            floatShares: ''
+
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -151,6 +153,10 @@ export default class Stocks extends Component {
                         Previsão de fechamento:{' '}
                         {this.state.previsaoDeFechamento}
                     </p>
+                    <p>
+                        Float Shares:{' '}
+                        {this.state.floatShares}
+                    </p>
                     <h2>Notícias relacionadas: </h2>
                     {liNoticias}
                     <form action='/'>
@@ -209,12 +215,25 @@ export default class Stocks extends Component {
             }
         };
 
+        const floatShrs = {
+            method: 'GET',
+            url:
+                'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/' +
+                this.state.stock,
+            params: {modules: 'defaultKeyStatistics'},
+            headers: {
+                'x-rapidapi-key':
+                    '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
+                'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
+            }
+        };
+
         axios
             .request(noticias)
             .then((response) => {
                 if (Math.floor(response.status / 100) === 2) {
                     var lista_noticias = response.data['Content']['result'];
-                    console.log('NOTICIAS =--------------', lista_noticias);
+                    //console.log('NOTICIAS =--------------', lista_noticias);
                     var lista_resposta = [];
 
                     for (var i = 0; i < lista_noticias.length; i++) {
@@ -247,6 +266,21 @@ export default class Stocks extends Component {
                         previsaoDeFechamento:
                             response.data[this.state.stock].chartPreviousClose +
                             ' USD'
+                    });
+                    return;
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+
+        axios
+            .request(floatShrs)
+            .then((response) => {
+                if (Math.floor(response.status / 100) === 2) {
+                    this.setState({
+                        floatShares:
+                            response.data.quoteSummary.result[0].defaultKeyStatistics.floatShares.longFmt + ' de ações'
                     });
                     return;
                 }
