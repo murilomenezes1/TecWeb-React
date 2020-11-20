@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { ListGroup } from 'react-bootstrap';
 
 import "./styles.css";
@@ -13,14 +15,9 @@ export default class Trending extends Component{
             list_stocks: []
         };
 
-        // this.getStocks = this.getStocks.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         
     }
-
-    // componentDidMount(){
-        
-    // }
 
     componentDidMount(){
         const popular = {
@@ -36,14 +33,6 @@ export default class Trending extends Component{
         axios.request(popular)
         .then((response) => {
             var bestStocks = response.data.finance.result[0].quotes
-            console.log(bestStocks);
-
-            bestStocks.map((stock) =>{
-                console.log(stock.symbol)
-                console.log(stock.longName)
-                console.log(stock.regularMarketOpen)
-                console.log(stock.regularMarketPrice)
-            })
 
             this.setState({
                 list_stocks: bestStocks
@@ -61,38 +50,28 @@ export default class Trending extends Component{
                 <ListGroup.Item className="item">
                     <h4 className="title" >{stock.symbol}</h4>
                     <p className="description" >{stock.longName}</p>
-                    <p className="price-open">Open: 
+                    <p className="price-open">
+                        Open: 
                         <p className="price">{stock.regularMarketOpen}</p>
                     </p>
-                    <p className="price-now">Now: 
+                    <p className="price-now">
+                        Now: 
                         <p className="price">{stock.regularMarketPrice}</p>
                     </p>
+                    <button className="btn btn-primary submit-button">Buy</button>
                 </ListGroup.Item>
             )
         })
 
-        // var listStocks = this.state.list_stocks;
-
-        //     //regularMarketPrice
-        //     //regularMarketOpen
-        //     //symbol
-        //     //displayName
-        // var listItem = listStocks.map((stock) => {
-        //     return(
-        //         <ListGroup.Item className="item">
-        //             <h4 className="title">{stock.symbol}</h4>
-        //             <p className="description">{stock.displayName}</p>
-        //         </ListGroup.Item>
-        //     );
-        // });
-
         return(
             <div className="container">
+                <h1 className="title-page">
+                    Trending Stocks
+                </h1>
                 <ListGroup className="list">
                     {listItens}
                     
                 </ListGroup>
-                {/* <button className="btn btn-primary submit-button" type="button" onClick={this.getStocks}>Get Best Stocks</button> */}
             </div>
         );
     }

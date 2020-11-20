@@ -1,3 +1,7 @@
+.container{
+    margin-bottom: 100px;
+}
+
 .list{
     border-radius: 8px;
     margin-top: 50px;
@@ -10,29 +14,29 @@
     flex-direction: column!important;
     align-items: flex-start!important;
     justify-content: flex-start!important;
-    height: 80px;
+    height: 90px;
     background-color: #121212!important;
-    /* border-color: #dbdbdb!important; */
+    border-color: #212121!important;
 }
 
 .title{
     color: #2c82c9;
 }
 
+.title-page{
+    margin-top: 30px;
+    color: #2c82c9;
+    text-align: center;
+}
+
 .description{
     color: #fff;
     font-size: 16px;
-    margin-left: 10px;
-}
-
-.submit-button{
-    background-color: #2c82c9;
-    margin-top: 20px;
-    width: 100%;
+    margin-left: 5px;
 }
 
 .price-open{
-    font-size: 12px;
+    font-size: 16px;
     position: absolute;
     top: 20px;
     left: 40%;
@@ -40,14 +44,23 @@
 }
 
 .price-now{
-    font-size: 12px;
+    font-size: 16px;
     position: absolute;
     top: 20px;
-    left: 70%;
+    left: 65%;
     color: #fff;
 }
 
 .price{
     color: #2c82c9;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+.submit-button{
+    position: absolute;
+    top: 20px;
+    left: 85%;
+    width: 120px;
+    background: #2c82c9;
+    color: #fff;
 }
