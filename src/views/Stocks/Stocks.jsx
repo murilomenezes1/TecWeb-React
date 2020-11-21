@@ -20,7 +20,7 @@ export default class Stocks extends Component {
 
     this.handleChange = this.handleChange.bind(this);
 
-    this.search = this.search.bind(this);
+    this.search = this.search.bind(this); 
   }
 
   render() {
