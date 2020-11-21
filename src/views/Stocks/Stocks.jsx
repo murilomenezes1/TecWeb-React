@@ -199,6 +199,18 @@ export default class Stocks extends Component {
       },
     };
 
+    const floatShrs = {
+      method: "GET",
+      url:
+        "https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/" +
+        this.state.stock,
+      params: { modules: "defaultKeyStatistics" },
+      headers: {
+        "x-rapidapi-key": "8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2",
+        "x-rapidapi-host": "yahoo-finance-low-latency.p.rapidapi.com",
+      },
+    };
+
     const noticias = {
       method: "GET",
       url: "https://yahoo-finance-low-latency.p.rapidapi.com/v2/finance/news",
@@ -231,6 +243,22 @@ export default class Stocks extends Component {
 
           console.log("LISTA DE NOTICIAS", lista_resposta);
           this.setState({ lista_de_noticias: lista_resposta });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    axios
+      .request(floatShrs)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            floatShares:
+              response.data.quoteSummary.result[0].defaultKeyStatistics
+                .floatShares.longFmt + " de ações",
+          });
           return;
         }
       })
