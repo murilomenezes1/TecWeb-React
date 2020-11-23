@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container{
+    border: 1px solid #010101;
+    padding: 50px 40px;
+    border-radius: 8px;
+    background: #212121;
+}
+
+.form-control{
+    width: 400px!important;
+    height: 35px!important;
+}
+
+.sign-in-button, .sign-up-button{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.labels-login{
+    font-size: 20px;
+}

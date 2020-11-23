@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import api from '../../API';
 import history from '../../history';
+
+import "./styles.css"
+
 export default class Signup extends Component {
     constructor(props) {
         super(props);
@@ -17,34 +20,40 @@ export default class Signup extends Component {
         }
 
         return (
-            <div>
-                <header>
-                    <h1>stockMERN</h1>
-                </header>
-                <ul>
-                    Username:{' '}
-                    <input
-                        name='username'
-                        value={this.state.user.username}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    Password:{' '}
-                    <input
-                        name='password'
-                        value={this.state.user.password}
-                        onChange={this.handleChange}
-                    />
-                    <br></br>
-                    <br></br>
-                    <button onClick={this.signup}> Sign Up </button>
+            <div className="container">
+                <form className="form-container">
+                    <header>
+                        <h1>stockMERN</h1>
+                    </header>
+                    <div className="form-group">
+                        <label htmlFor="" className="labels-login">Username:{' '}</label>
+                        <input
+                            className="form-control"
+                            name='username'
+                            value={this.state.user.username}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="" className="labels-login">Password:{' '}</label>
+                        <input
+                            className="form-control"
+                            name='password'
+                            value={this.state.user.password}
+                            onChange={this.handleChange}
+                        />
+                        
+                    </div>
+                    <button type="button" className="btn btn-primary sign-in-button" onClick={this.signup}> Sign Up </button>
                     <button
+                        type="button" 
+                        className="btn btn-success sign-in-button"
                         onClick={() => {
                             history.push('/');
                         }}>
                         Sign In
                     </button>
-                </ul>
+                </form>
             </div>
         );
     }
