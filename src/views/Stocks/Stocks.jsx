@@ -17,6 +17,7 @@ export default class Stocks extends Component {
       previsaoDeFechamento: "",
       lista_de_noticias: [],
       description: "",
+      profit_margins: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -49,7 +50,11 @@ export default class Stocks extends Component {
       return (
         <p key={stock.symbol} className="info-data">
           {" "}
-          Ticker: {stock.symbol} Company: {stock.shortName}
+          Ticker: <br/> {stock.symbol} 
+          <br/>
+          <br/>
+          Company: <br/> {stock.shortName}
+          <br/>
         </p>
       );
     });
@@ -58,9 +63,9 @@ export default class Stocks extends Component {
       return (
         <p key={stock.regularMarketPrice} className="dit-data">
           {" "}
-          Price: {stock.regularMarketPrice} {stock.financialCurrency} | 52-week
-          low: {stock.fiftyTwoWeekLow} {stock.financialCurrency} | 52-week high:{" "}
-          {stock.fiftyTwoWeekHigh} {stock.financialCurrency}
+          <p>Price: <br/> {stock.regularMarketPrice} {stock.financialCurrency}</p>
+          <p>52-week low: <br/> {stock.fiftyTwoWeekLow} {stock.financialCurrency}</p>
+          <p>52-week high:{" "} <br/> {stock.fiftyTwoWeekHigh} {stock.financialCurrency}</p>
         </p>
       );
     });
@@ -68,8 +73,9 @@ export default class Stocks extends Component {
       return (
         <p key={stock.regularMarketDayOpen} className="regular-data">
           {" "}
-          Open: {stock.regularMarketOpen} {stock.financialCurrency} | Volume:{" "}
-          {stock.regularMarketVolume} | Mkt Cap: {stock.marketCap}
+          <p>Open: <br/> {stock.regularMarketOpen} {stock.financialCurrency}</p>
+          <p>Volume:{" "} <br/> {stock.regularMarketVolume}</p>
+          <p>Mkt Cap: <br/> {stock.marketCap}</p>
         </p>
       );
     });
@@ -83,18 +89,21 @@ export default class Stocks extends Component {
       console.log("LINK ", link);
       return (
         <div className="news-content">
-          ----------------------------------------------------------------------------
+          <hr className="hr"/>
           <h3 className="news-title">{titulo}</h3>
+          <br/>
           <a href={link} className="link-news">
-            <img src={imagem} style={{ width: "400px", height: "300px" }}></img>
+            <img src={imagem} className="news-image"></img>
           </a>
+          <br/>
+          <br/>
           <p className="news-text">{resumo}</p>
         </div>
       );
     });
 
     return (
-      <div>
+      <div className="container">
         <header>
           <h1>stockMERN</h1>
         </header>
@@ -153,8 +162,9 @@ export default class Stocks extends Component {
           {infolist}
           {stockdit}
           {regularmarket}
-          <p >Previsão de fechamento: {this.state.previsaoDeFechamento}</p>
-          <p className="descricao">Descrição da empresa: {this.state.description}</p>
+          <p className="fechamento">Previsão de fechamento: <br/> {this.state.previsaoDeFechamento}</p>
+          <p className="descricao">Descrição da empresa: <br/> {this.state.description}</p>
+          <br/>
           <h2>Notícias relacionadas: </h2>
           {liNoticias}
         </div>
@@ -273,6 +283,20 @@ export default class Stocks extends Component {
             .catch(function (error) {
                 console.error(error);
             });
+        axios
+        .request(floatShrs)
+        .then((response) => {
+            if (Math.floor(response.status / 100) === 2) {
+                this.setState({
+                  profit_margins:
+                        response.data.quoteSummary.result[0].defaultKeyStatistics.profitMargins.fmt
+                });
+                return;
+            }
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 
     axios
       .request(previsaoDeFechamento)

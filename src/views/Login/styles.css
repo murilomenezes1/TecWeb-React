@@ -15,6 +15,9 @@
 .form-control{
     width: 400px!important;
     height: 35px!important;
+    background-color: #121212!important;
+    border: 0!important;
+    color: #f0f0f0!important;
 }
 
 .sign-in-button, .sign-up-button{

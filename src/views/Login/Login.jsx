@@ -43,7 +43,7 @@ export default class Login extends Component {
                             onChange={this.handleChange}
                         />
                     </div>
-                    <button type="button" className="btn btn-primary sign-in-button" onClick={this.login}>Sign In</button>
+                    <button type="button" className="btn btn-success sign-in-button" onClick={this.login}>Sign In</button>
                     <br/>
                     <button
                         type="button"

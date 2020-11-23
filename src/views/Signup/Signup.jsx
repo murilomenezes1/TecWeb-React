@@ -47,7 +47,7 @@ export default class Signup extends Component {
                     <button type="button" className="btn btn-primary sign-in-button" onClick={this.signup}> Sign Up </button>
                     <button
                         type="button" 
-                        className="btn btn-primary sign-in-button"
+                        className="btn btn-success sign-in-button"
                         onClick={() => {
                             history.push('/');
                         }}>
