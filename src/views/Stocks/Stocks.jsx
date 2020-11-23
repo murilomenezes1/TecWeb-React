@@ -16,6 +16,7 @@ export default class Stocks extends Component {
       previsaoDeFechamento: "",
       lista_de_noticias: [],
       description: "",
+      profit_margins: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -145,6 +146,7 @@ export default class Stocks extends Component {
           {stockdit}
           {regularmarket}
           <p>Previsão de fechamento: {this.state.previsaoDeFechamento}</p>
+          <p>Margem de Lucro: {this.state.profit_margins}</p>
           <p>Descrição da empresa: {this.state.description}</p>
           <h2>Notícias relacionadas: </h2>
           {liNoticias}
@@ -266,6 +268,20 @@ export default class Stocks extends Component {
             .catch(function (error) {
                 console.error(error);
             });
+        axios
+        .request(floatShrs)
+        .then((response) => {
+            if (Math.floor(response.status / 100) === 2) {
+                this.setState({
+                  profit_margins:
+                        response.data.quoteSummary.result[0].defaultKeyStatistics.profitMargins.fmt
+                });
+                return;
+            }
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 
     axios
       .request(previsaoDeFechamento)
