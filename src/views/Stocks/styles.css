@@ -1,0 +1,67 @@
+html{
+    height: 100%;
+    background: #282c34;
+}
+
+.sub-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.line{
+    margin-top: 30px;
+    position: relative;
+    width: 800px;
+    margin-left: 30px;
+    background: #212121;
+    border-radius: 4px;
+}
+
+.labels{
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.form-container{
+    border: 1px solid #010101;
+    padding: 50px 40px;
+    border-radius: 8px;
+    background: #212121;
+    margin-right: 30px;
+}
+
+.form-control{
+    width: 400px!important;
+    height: 35px!important;
+}
+
+.search-stock{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.information{
+    margin-top: 50px;
+    font-size: 16px;
+    width: 750px;
+    background-color: #212121;
+    padding: 30px 40px;
+    border-radius: 8px;
+    text-align: start;
+}
+
+.log-out{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.hr{
+    background-color: #f0f0f0;
+}
+
+.news-image{
+    width: 650px;
+    height: auto;
+}

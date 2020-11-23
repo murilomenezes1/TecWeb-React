@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
 
+import "./styles.css"
 export default class Stocks extends Component {
   constructor(props) {
     super(props);
@@ -47,29 +48,34 @@ export default class Stocks extends Component {
 
     var infolist = stockinfo.map((stock) => {
       return (
-        <p key={stock.symbol}>
+        <p key={stock.symbol} className="info-data">
           {" "}
-          Ticker: {stock.symbol} Company: {stock.shortName}
+          Ticker: <br/> {stock.symbol} 
+          <br/>
+          <br/>
+          Company: <br/> {stock.shortName}
+          <br/>
         </p>
       );
     });
 
     var stockdit = stockinfo.map((stock) => {
       return (
-        <p key={stock.regularMarketPrice}>
+        <p key={stock.regularMarketPrice} className="dit-data">
           {" "}
-          Price: {stock.regularMarketPrice} {stock.financialCurrency} | 52-week
-          low: {stock.fiftyTwoWeekLow} {stock.financialCurrency} | 52-week high:{" "}
-          {stock.fiftyTwoWeekHigh} {stock.financialCurrency}
+          <p>Price: <br/> {stock.regularMarketPrice} {stock.financialCurrency}</p>
+          <p>52-week low: <br/> {stock.fiftyTwoWeekLow} {stock.financialCurrency}</p>
+          <p>52-week high:{" "} <br/> {stock.fiftyTwoWeekHigh} {stock.financialCurrency}</p>
         </p>
       );
     });
     var regularmarket = stockinfo.map((stock) => {
       return (
-        <p key={stock.regularMarketDayOpen}>
+        <p key={stock.regularMarketDayOpen} className="regular-data">
           {" "}
-          Open: {stock.regularMarketOpen} {stock.financialCurrency} | Volume:{" "}
-          {stock.regularMarketVolume} | Mkt Cap: {stock.marketCap}
+          <p>Open: <br/> {stock.regularMarketOpen} {stock.financialCurrency}</p>
+          <p>Volume:{" "} <br/> {stock.regularMarketVolume}</p>
+          <p>Mkt Cap: <br/> {stock.marketCap}</p>
         </p>
       );
     });
@@ -82,78 +88,88 @@ export default class Stocks extends Component {
 
       console.log("LINK ", link);
       return (
-        <div>
-          ----------------------------------------------------------------------------
-          <h3>{titulo}</h3>
-          <a href={link}>
-            <img src={imagem} style={{ width: "400px", height: "300px" }}></img>
+        <div className="news-content">
+          <hr className="hr"/>
+          <h3 className="news-title">{titulo}</h3>
+          <br/>
+          <a href={link} className="link-news">
+            <img src={imagem} className="news-image"></img>
           </a>
-          <p>{resumo}</p>
+          <br/>
+          <br/>
+          <p className="news-text">{resumo}</p>
         </div>
       );
     });
 
     return (
-      <div>
+      <div className="container">
         <header>
           <h1>stockMERN</h1>
         </header>
 
-        <ul>
-          <input
-            name="stock"
-            value={this.state.stock}
-            onChange={this.handleChange}
-          />
-          <br></br>
+        <div className="sub-content">
+          <div className="form-group form-container">
+              <label htmlFor="" className="labels">Search for stock</label>
+              <br/>
+              <input
+                className="form-control"
+                name="stock"
+                value={this.state.stock}
+                onChange={this.handleChange}
+              />
+            <button type="button" className="btn btn-primary search-stock" onClick={this.search}> Search </button>
+            <form action="/">
+              <input type="submit" className="btn btn-danger log-out" value="Logout" />
+            </form>
+          </div>
+          <div className="line">
+            <Line
+                data={graph}
+                options={{
+                  title: {
+                    display: true,
+                    text: this.state.stock + " price over time",
+                    fontSize: 10,
+                  },
+                  legend: {
+                    display: false,
+                    position: "right",
+                  },
+                  scales: {
+                    xAxes: [
+                      {
+                        ticks: {
+                          display: false,
+                        },
+                      },
+                    ],
+                  },
+                  elements: {
+                    point: {
+                      radius: 0,
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true,
+                  },
+                }}
+              />
+          </div>
+        </div>
 
-          <button onClick={this.search}> Search </button>
-        </ul>
-
-        <ul>
+        <div className="information">
           {" "}
           {infolist}
-          <Line
-            data={graph}
-            options={{
-              title: {
-                display: true,
-                text: this.state.stock + " price over time",
-                fontSize: 10,
-              },
-              legend: {
-                display: false,
-                position: "right",
-              },
-              scales: {
-                xAxes: [
-                  {
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                ],
-              },
-              elements: {
-                point: {
-                  radius: 0,
-                },
-                responsive: true,
-                maintainAspectRatio: true,
-              },
-            }}
-          />
           {stockdit}
           {regularmarket}
-          <p>Previsão de fechamento: {this.state.previsaoDeFechamento}</p>
+          <p className="fechamento">Previsão de fechamento: <br/> {this.state.previsaoDeFechamento}</p>
           <p>Margem de Lucro: {this.state.profit_margins}</p>
-          <p>Descrição da empresa: {this.state.description}</p>
+          <p className="descricao">Descrição da empresa: <br/> {this.state.description}</p>
+          <br/>
           <h2>Notícias relacionadas: </h2>
           {liNoticias}
-          <form action="/">
-            <input type="submit" value="Logout" />
-          </form>
-        </ul>
+        </div>
+        
       </div>
     );
   }
@@ -201,18 +217,18 @@ export default class Stocks extends Component {
       },
     };
 
-        const floatShrs = {
-            method: 'GET',
-            url:
-                'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/' +
-                this.state.stock,
-            params: {modules: 'defaultKeyStatistics'},
-            headers: {
-                'x-rapidapi-key':
-                    '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
-                'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
-            }
-        };
+    const floatShrs = {
+        method: 'GET',
+        url:
+            'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/' +
+            this.state.stock,
+        params: {modules: 'defaultKeyStatistics'},
+        headers: {
+            'x-rapidapi-key':
+                '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
+            'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
+        }
+    };
 
     const noticias = {
       method: "GET",
