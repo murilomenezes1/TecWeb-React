@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
 
+import "./styles.css"
 export default class Stocks extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +47,7 @@ export default class Stocks extends Component {
 
     var infolist = stockinfo.map((stock) => {
       return (
-        <p key={stock.symbol}>
+        <p key={stock.symbol} className="info-data">
           {" "}
           Ticker: {stock.symbol} Company: {stock.shortName}
         </p>
@@ -55,7 +56,7 @@ export default class Stocks extends Component {
 
     var stockdit = stockinfo.map((stock) => {
       return (
-        <p key={stock.regularMarketPrice}>
+        <p key={stock.regularMarketPrice} className="dit-data">
           {" "}
           Price: {stock.regularMarketPrice} {stock.financialCurrency} | 52-week
           low: {stock.fiftyTwoWeekLow} {stock.financialCurrency} | 52-week high:{" "}
@@ -65,7 +66,7 @@ export default class Stocks extends Component {
     });
     var regularmarket = stockinfo.map((stock) => {
       return (
-        <p key={stock.regularMarketDayOpen}>
+        <p key={stock.regularMarketDayOpen} className="regular-data">
           {" "}
           Open: {stock.regularMarketOpen} {stock.financialCurrency} | Volume:{" "}
           {stock.regularMarketVolume} | Mkt Cap: {stock.marketCap}
@@ -81,13 +82,13 @@ export default class Stocks extends Component {
 
       console.log("LINK ", link);
       return (
-        <div>
+        <div className="news-content">
           ----------------------------------------------------------------------------
-          <h3>{titulo}</h3>
-          <a href={link}>
+          <h3 className="news-title">{titulo}</h3>
+          <a href={link} className="link-news">
             <img src={imagem} style={{ width: "400px", height: "300px" }}></img>
           </a>
-          <p>{resumo}</p>
+          <p className="news-text">{resumo}</p>
         </div>
       );
     });
@@ -98,60 +99,66 @@ export default class Stocks extends Component {
           <h1>stockMERN</h1>
         </header>
 
-        <ul>
-          <input
-            name="stock"
-            value={this.state.stock}
-            onChange={this.handleChange}
-          />
-          <br></br>
+        <div className="sub-content">
+          <div className="form-group form-container">
+              <label htmlFor="" className="labels">Search for stock</label>
+              <br/>
+              <input
+                className="form-control"
+                name="stock"
+                value={this.state.stock}
+                onChange={this.handleChange}
+              />
+            <button type="button" className="btn btn-primary search-stock" onClick={this.search}> Search </button>
+            <form action="/">
+              <input type="submit" className="btn btn-danger log-out" value="Logout" />
+            </form>
+          </div>
+          <div className="line">
+            <Line
+                data={graph}
+                options={{
+                  title: {
+                    display: true,
+                    text: this.state.stock + " price over time",
+                    fontSize: 10,
+                  },
+                  legend: {
+                    display: false,
+                    position: "right",
+                  },
+                  scales: {
+                    xAxes: [
+                      {
+                        ticks: {
+                          display: false,
+                        },
+                      },
+                    ],
+                  },
+                  elements: {
+                    point: {
+                      radius: 0,
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true,
+                  },
+                }}
+              />
+          </div>
+        </div>
 
-          <button onClick={this.search}> Search </button>
-        </ul>
-
-        <ul>
+        <div className="information">
           {" "}
           {infolist}
-          <Line
-            data={graph}
-            options={{
-              title: {
-                display: true,
-                text: this.state.stock + " price over time",
-                fontSize: 10,
-              },
-              legend: {
-                display: false,
-                position: "right",
-              },
-              scales: {
-                xAxes: [
-                  {
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                ],
-              },
-              elements: {
-                point: {
-                  radius: 0,
-                },
-                responsive: true,
-                maintainAspectRatio: true,
-              },
-            }}
-          />
           {stockdit}
           {regularmarket}
-          <p>Previsão de fechamento: {this.state.previsaoDeFechamento}</p>
-          <p>Descrição da empresa: {this.state.description}</p>
+          <p >Previsão de fechamento: {this.state.previsaoDeFechamento}</p>
+          <p className="descricao">Descrição da empresa: {this.state.description}</p>
           <h2>Notícias relacionadas: </h2>
           {liNoticias}
-          <form action="/">
-            <input type="submit" value="Logout" />
-          </form>
-        </ul>
+        </div>
+        
       </div>
     );
   }
