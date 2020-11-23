@@ -163,6 +163,7 @@ export default class Stocks extends Component {
           {stockdit}
           {regularmarket}
           <p className="fechamento">Previsão de fechamento: <br/> {this.state.previsaoDeFechamento}</p>
+          <p>Margem de Lucro: {this.state.profit_margins}</p>
           <p className="descricao">Descrição da empresa: <br/> {this.state.description}</p>
           <br/>
           <h2>Notícias relacionadas: </h2>
@@ -216,18 +217,18 @@ export default class Stocks extends Component {
       },
     };
 
-        const floatShrs = {
-            method: 'GET',
-            url:
-                'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/' +
-                this.state.stock,
-            params: {modules: 'defaultKeyStatistics'},
-            headers: {
-                'x-rapidapi-key':
-                    '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
-                'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
-            }
-        };
+    const floatShrs = {
+        method: 'GET',
+        url:
+            'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/' +
+            this.state.stock,
+        params: {modules: 'defaultKeyStatistics'},
+        headers: {
+            'x-rapidapi-key':
+                '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
+            'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
+        }
+    };
 
     const noticias = {
       method: "GET",
