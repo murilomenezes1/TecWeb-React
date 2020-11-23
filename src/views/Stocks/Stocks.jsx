@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
 
-import "./styles.css"
+import "./styles.css";
 export default class Stocks extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +18,7 @@ export default class Stocks extends Component {
       lista_de_noticias: [],
       description: "",
       profit_margins: "",
+      industry: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -50,11 +51,11 @@ export default class Stocks extends Component {
       return (
         <p key={stock.symbol} className="info-data">
           {" "}
-          Ticker: <br/> {stock.symbol} 
-          <br/>
-          <br/>
-          Company: <br/> {stock.shortName}
-          <br/>
+          Ticker: <br /> {stock.symbol}
+          <br />
+          <br />
+          Company: <br /> {stock.shortName}
+          <br />
         </p>
       );
     });
@@ -63,9 +64,17 @@ export default class Stocks extends Component {
       return (
         <p key={stock.regularMarketPrice} className="dit-data">
           {" "}
-          <p>Price: <br/> {stock.regularMarketPrice} {stock.financialCurrency}</p>
-          <p>52-week low: <br/> {stock.fiftyTwoWeekLow} {stock.financialCurrency}</p>
-          <p>52-week high:{" "} <br/> {stock.fiftyTwoWeekHigh} {stock.financialCurrency}</p>
+          <p>
+            Price: <br /> {stock.regularMarketPrice} {stock.financialCurrency}
+          </p>
+          <p>
+            52-week low: <br /> {stock.fiftyTwoWeekLow}{" "}
+            {stock.financialCurrency}
+          </p>
+          <p>
+            52-week high: <br /> {stock.fiftyTwoWeekHigh}{" "}
+            {stock.financialCurrency}
+          </p>
         </p>
       );
     });
@@ -73,9 +82,15 @@ export default class Stocks extends Component {
       return (
         <p key={stock.regularMarketDayOpen} className="regular-data">
           {" "}
-          <p>Open: <br/> {stock.regularMarketOpen} {stock.financialCurrency}</p>
-          <p>Volume:{" "} <br/> {stock.regularMarketVolume}</p>
-          <p>Mkt Cap: <br/> {stock.marketCap}</p>
+          <p>
+            Open: <br /> {stock.regularMarketOpen} {stock.financialCurrency}
+          </p>
+          <p>
+            Volume: <br /> {stock.regularMarketVolume}
+          </p>
+          <p>
+            Mkt Cap: <br /> {stock.marketCap}
+          </p>
         </p>
       );
     });
@@ -89,14 +104,14 @@ export default class Stocks extends Component {
       console.log("LINK ", link);
       return (
         <div className="news-content">
-          <hr className="hr"/>
+          <hr className="hr" />
           <h3 className="news-title">{titulo}</h3>
-          <br/>
+          <br />
           <a href={link} className="link-news">
             <img src={imagem} className="news-image"></img>
           </a>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <p className="news-text">{resumo}</p>
         </div>
       );
@@ -110,50 +125,63 @@ export default class Stocks extends Component {
 
         <div className="sub-content">
           <div className="form-group form-container">
-              <label htmlFor="" className="labels">Search for stock</label>
-              <br/>
-              <input
-                className="form-control"
-                name="stock"
-                value={this.state.stock}
-                onChange={this.handleChange}
-              />
-            <button type="button" className="btn btn-primary search-stock" onClick={this.search}> Search </button>
+            <label htmlFor="" className="labels">
+              Search for stock
+            </label>
+            <br />
+            <input
+              className="form-control"
+              name="stock"
+              value={this.state.stock}
+              onChange={this.handleChange}
+            />
+            <button
+              type="button"
+              className="btn btn-primary search-stock"
+              onClick={this.search}
+            >
+              {" "}
+              Search{" "}
+            </button>
             <form action="/">
-              <input type="submit" className="btn btn-danger log-out" value="Logout" />
+              <input
+                type="submit"
+                className="btn btn-danger log-out"
+                value="Logout"
+              />
             </form>
           </div>
           <div className="line">
             <Line
-                data={graph}
-                options={{
-                  title: {
-                    display: true,
-                    text: this.state.stock + " price over time",
-                    fontSize: 10,
-                  },
-                  legend: {
-                    display: false,
-                    position: "right",
-                  },
-                  scales: {
-                    xAxes: [
-                      {
-                        ticks: {
-                          display: false,
-                        },
+              data={graph}
+              options={{
+                title: {
+                  display: true,
+                  text: this.state.stock + " price over time",
+                  fontSize: 10,
+                },
+                legend: {
+                  display: false,
+                  position: "right",
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      ticks: {
+                        display: false,
                       },
-                    ],
-                  },
-                  elements: {
-                    point: {
-                      radius: 0,
                     },
-                    responsive: true,
-                    maintainAspectRatio: true,
+                  ],
+                },
+                elements: {
+                  point: {
+                    radius: 0,
                   },
-                }}
-              />
+                  responsive: true,
+                  maintainAspectRatio: true,
+                },
+              }}
+            />
           </div>
         </div>
 
@@ -162,14 +190,20 @@ export default class Stocks extends Component {
           {infolist}
           {stockdit}
           {regularmarket}
-          <p className="fechamento">Previsão de fechamento: <br/> {this.state.previsaoDeFechamento}</p>
+          <p className="fechamento">
+            Previsão de fechamento: <br /> {this.state.previsaoDeFechamento}
+          </p>
           <p>Margem de Lucro: {this.state.profit_margins}</p>
-          <p className="descricao">Descrição da empresa: <br/> {this.state.description}</p>
-          <br/>
+          <p className="industria">
+            Indústria da empresa: <br /> {this.state.industry}
+          </p>
+          <p className="descricao">
+            Descrição da empresa: <br /> {this.state.description}
+          </p>
+          <br />
           <h2>Notícias relacionadas: </h2>
           {liNoticias}
         </div>
-        
       </div>
     );
   }
@@ -218,16 +252,15 @@ export default class Stocks extends Component {
     };
 
     const floatShrs = {
-        method: 'GET',
-        url:
-            'https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/' +
-            this.state.stock,
-        params: {modules: 'defaultKeyStatistics'},
-        headers: {
-            'x-rapidapi-key':
-                '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
-            'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
-        }
+      method: "GET",
+      url:
+        "https://yahoo-finance-low-latency.p.rapidapi.com/v11/finance/quoteSummary/" +
+        this.state.stock,
+      params: { modules: "defaultKeyStatistics" },
+      headers: {
+        "x-rapidapi-key": "8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2",
+        "x-rapidapi-host": "yahoo-finance-low-latency.p.rapidapi.com",
+      },
     };
 
     const noticias = {
@@ -239,7 +272,6 @@ export default class Stocks extends Component {
         "x-rapidapi-host": "yahoo-finance-low-latency.p.rapidapi.com",
       },
     };
-
 
     axios
       .request(noticias)
@@ -270,34 +302,52 @@ export default class Stocks extends Component {
         console.error(error);
       });
 
-        axios
-            .request(floatShrs)
-            .then((response) => {
-                if (Math.floor(response.status / 100) === 2) {
-                    this.setState({
-                        floatShares:
-                            response.data.quoteSummary.result[0].defaultKeyStatistics.floatShares.longFmt + ' de ações'
-                    });
-                    return;
-                }
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-        axios
-        .request(floatShrs)
-        .then((response) => {
-            if (Math.floor(response.status / 100) === 2) {
-                this.setState({
-                  profit_margins:
-                        response.data.quoteSummary.result[0].defaultKeyStatistics.profitMargins.fmt
-                });
-                return;
-            }
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
+    axios
+      .request(floatShrs)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            floatShares:
+              response.data.quoteSummary.result[0].defaultKeyStatistics
+                .floatShares.longFmt + " de ações",
+          });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    axios
+      .request(floatShrs)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            profit_margins:
+              response.data.quoteSummary.result[0].defaultKeyStatistics
+                .profitMargins.fmt,
+          });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    axios
+      .request(floatShrs)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            floatShares:
+              response.data.quoteSummary.result[0].defaultKeyStatistics
+                .floatShares.longFmt + " de ações",
+          });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
 
     axios
       .request(previsaoDeFechamento)
@@ -313,7 +363,6 @@ export default class Stocks extends Component {
       .catch(function (error) {
         console.error(error);
       });
-
 
     axios
       .request(options)
@@ -351,6 +400,21 @@ export default class Stocks extends Component {
             description:
               response.data.quoteSummary.result[0].assetProfile
                 .longBusinessSummary,
+          });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    axios
+      .request(description)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            industry:
+              response.data.quoteSummary.result[0].assetProfile.industry,
           });
           return;
         }
