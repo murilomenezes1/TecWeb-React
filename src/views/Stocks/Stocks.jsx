@@ -2,6 +2,9 @@ import React, { Component } from "react";
 
 import axios from "axios";
 import { Line } from "react-chartjs-2";
+import { Link } from 'react-router-dom';
+
+import history from '../../history';
 
 import { ListGroup } from 'react-bootstrap';
 import "./styles.css";
@@ -236,7 +239,7 @@ export default class Stocks extends Component {
               <h1 className="title-page">
                   Trending Stocks
               </h1>
-              <ListGroup className="list-stocks">
+              <ListGroup className="list-stocks" onClick={() => history.push("/Trending")}>
                   {listItens}
                   
               </ListGroup>
@@ -266,7 +269,12 @@ export default class Stocks extends Component {
             </div>
             <div className="link">
               <h5 className="link-title">Link da empresa:</h5> 
-              <p className="link-text">{this.state.link_empresa}</p>
+              <a className="link-text" 
+                onClick={() => {
+                  window.location.href=`${this.state.link_empresa}`}
+                  }>
+                {this.state.link_empresa}
+                </a>
             </div>
             <div className="descricao">
               <hr className="hr"/>
