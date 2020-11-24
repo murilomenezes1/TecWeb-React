@@ -1,0 +1,228 @@
+html{
+    height: 100%;
+    background: #282c34;
+}
+
+.sub-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.line{
+    margin-top: 30px;
+    position: relative;
+    width: 800px;
+    margin-left: 30px;
+    background: #212121;
+    border-radius: 4px;
+}
+
+.second-content{
+    display: flex;
+    flex-direction: row;
+}
+
+.trending{
+    padding: 30px;
+    width: 500px;
+    margin-right: 100px;
+}
+
+.list-stocks{
+    border-radius: 8px;
+    margin-top: 20px;
+    background: #212121;
+}
+
+.item-content{
+    position: relative;
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: flex-start!important;
+    justify-content: flex-start!important;
+    height: 90px;
+    background-color: #212121!important;
+}
+
+.price-now-stocks{
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 75%;
+    color: #fff;
+}
+
+.labels{
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.form-container{
+    border: 1px solid #010101;
+    padding: 50px 40px;
+    border-radius: 8px;
+    background: #212121;
+    margin-right: 30px;
+}
+
+.form-control{
+    width: 400px!important;
+    height: 35px!important;
+}
+
+.search-stock{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.information{
+    position: relative;
+    margin-top: 50px;
+    font-size: 16px;
+    width: 750px;
+    background-color: #212121;
+    padding: 30px 40px;
+    border-radius: 8px;
+    text-align: start;
+}
+
+.company-symbol, .company-name, .open-title, .fechamento-title, .volume-title, 
+.market-cap-title, .high-title, .low-title, .price-title, .lucro-title, 
+.descricao-title, .industry-title, .forward_pe-title, .news-title, .link-title{
+    font-weight: bold;
+}
+
+.company-symbol, .company-name, .open-text, .fechamento-text, .volume-text, 
+.market-cap-text, .high-text, .low-text, .price-text, .lucro-text, 
+.descricao-text, .industry-text, .forward_pe-text,.news-text, .link-text{
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.descricao-text, .news-text{
+    line-height: 28px;
+}
+
+.company-symbol{
+    font-size: 32px;
+    position: relative;
+    top: 0;
+    left: 0px;
+    color: #2c82c9;
+}
+
+.company-name{
+    font-size: 18px;
+    position: relative;
+    top: 0;
+    left: 10px;
+}
+
+.stock-price{
+    position: absolute;
+    left: 50px;
+    top: 170px;
+}
+
+.open{
+    position: absolute;
+    left: 50px;
+    top: 270px;
+}
+
+.volume{
+    position: absolute;
+    left: 420px;
+    top: 370px;
+}
+
+.market-cap{
+    position: absolute;
+    left: 420px;
+    top: 470px;
+}
+
+.fechamento{
+    position: absolute;
+    left: 50px;
+    top: 370px;
+}
+
+.lucro{
+    position: absolute;
+    left: 420px;
+    top: 670px;
+}
+
+.industria{
+    position: absolute;
+    left: 50px;
+    top: 470px;
+}
+
+.link{
+    position: absolute;
+    left: 50px;
+    top: 570px;
+}
+
+.forward_pe{
+    padding: 40px;
+    position: absolute;
+    left: 20px;
+    top: 630px;
+}
+
+.descricao{
+    padding: 40px;
+    position: absolute;
+    left: 20px;
+    top: 740px;
+}
+
+.high{
+    position: absolute;
+    top: 170px;
+    left: 420px;
+}
+
+.low{
+    position: absolute;
+    top: 270px;
+    left: 420px;
+}
+
+.log-out{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.hr{
+    background-color: #f0f0f0;
+}
+
+.news-break{
+    margin-top: 30px;
+}
+
+.news-content{
+    margin-top: 30px;
+}
+
+.news{
+    padding: 30px 40px;
+    width: 750px;
+    background-color: #212121;
+    position: relative;
+    top: 1300px;
+    left: -40px;
+}
+
+.news-image{
+    width: 550px;
+    height: auto;
+}
