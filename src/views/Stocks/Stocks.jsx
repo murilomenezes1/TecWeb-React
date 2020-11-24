@@ -22,6 +22,7 @@ export default class Stocks extends Component {
       industry: "",
       list_stocks: [],
       forward_pe: "",
+      link_empresa: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -263,6 +264,10 @@ export default class Stocks extends Component {
               <h5 className="industry-title">Indústria da empresa:</h5> 
               <p className="industry-text">{this.state.industry}</p>
             </div>
+            <div className="link">
+              <h5 className="link-title">Link da empresa:</h5> 
+              <p className="link-text">{this.state.link_empresa}</p>
+            </div>
             <div className="descricao">
               <hr className="hr"/>
               <h5 className="descricao-title">Descrição da empresa:</h5> 
@@ -343,6 +348,10 @@ export default class Stocks extends Component {
         "x-rapidapi-host": "yahoo-finance-low-latency.p.rapidapi.com",
       },
     };
+
+    
+
+    
 
     axios
       .request(noticias)
@@ -495,6 +504,22 @@ export default class Stocks extends Component {
         console.error(error);
       });
 
+      axios
+      .request(description)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            link_empresa:
+              response.data.quoteSummary.result[0].assetProfile
+                .website,
+          });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
     axios
       .request(description)
       .then((response) => {
@@ -509,6 +534,7 @@ export default class Stocks extends Component {
       .catch(function (error) {
         console.error(error);
       });
+    
   }
 
   handleChange(event) {
