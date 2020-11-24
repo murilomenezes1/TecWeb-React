@@ -20,7 +20,8 @@ export default class Stocks extends Component {
       description: "",
       profit_margins: "",
       industry: "",
-      list_stocks: []
+      list_stocks: [],
+      forward_pe: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -254,6 +255,10 @@ export default class Stocks extends Component {
               <h5 className="lucro-title">Margem de Lucro:</h5> 
               <p className="lucro-text">{this.state.profit_margins}</p>
             </div>
+            <div className="forward_pe">
+              <h5 className="forward_pe-title">Forward P/E:</h5> 
+              <p className="forward_pe-text">{this.state.forward_pe}</p>
+            </div>
             <div className="industria">
               <h5 className="industry-title">Indústria da empresa:</h5> 
               <p className="industry-text">{this.state.industry}</p>
@@ -442,6 +447,22 @@ export default class Stocks extends Component {
       .catch(function (error) {
         console.error(error);
       });
+
+    axios
+    .request(options)
+    .then((response) => {
+      if (Math.floor(response.status / 100) === 2) {
+        this.setState({
+          forward_pe:
+            response.data.quoteResponse.result[0].forwardPE
+            
+        });
+        return;
+      }
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 
     axios
       .request(chartoptions)
