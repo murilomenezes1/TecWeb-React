@@ -19,6 +19,41 @@ html{
     border-radius: 4px;
 }
 
+.second-content{
+    display: flex;
+    flex-direction: row;
+}
+
+.trending{
+    padding: 30px;
+    width: 500px;
+    margin-right: 100px;
+}
+
+.list-stocks{
+    border-radius: 8px;
+    margin-top: 20px;
+    background: #212121;
+}
+
+.item-content{
+    position: relative;
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: flex-start!important;
+    justify-content: flex-start!important;
+    height: 90px;
+    background-color: #212121!important;
+}
+
+.price-now-stocks{
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 75%;
+    color: #fff;
+}
+
 .labels{
     font-size: 24px;
     margin-bottom: 30px;
@@ -43,6 +78,7 @@ html{
 }
 
 .information{
+    position: relative;
     margin-top: 50px;
     font-size: 16px;
     width: 750px;
@@ -50,6 +86,101 @@ html{
     padding: 30px 40px;
     border-radius: 8px;
     text-align: start;
+}
+
+.company-symbol, .company-name, .open-title, .fechamento-title, .volume-title, 
+.market-cap-title, .high-title, .low-title, .price-title, .lucro-title, 
+.descricao-title, .industry-title, .news-title{
+    font-weight: bold;
+}
+
+.company-symbol, .company-name, .open-text, .fechamento-text, .volume-text, 
+.market-cap-text, .high-text, .low-text, .price-text, .lucro-text, 
+.descricao-text, .industry-text, .news-text{
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.descricao-text, .news-text{
+    line-height: 28px;
+}
+
+.company-symbol{
+    font-size: 32px;
+    position: relative;
+    top: 0;
+    left: 0px;
+    color: #2c82c9;
+}
+
+.company-name{
+    font-size: 18px;
+    position: relative;
+    top: 0;
+    left: 10px;
+}
+
+.stock-price{
+    position: absolute;
+    left: 50px;
+    top: 170px;
+}
+
+.open{
+    position: absolute;
+    left: 50px;
+    top: 270px;
+}
+
+.volume{
+    position: absolute;
+    left: 420px;
+    top: 370px;
+}
+
+.market-cap{
+    position: absolute;
+    left: 420px;
+    top: 470px;
+}
+
+.fechamento{
+    position: absolute;
+    left: 50px;
+    top: 370px;
+}
+
+.lucro{
+    position: absolute;
+    left: 420px;
+    top: 570px;
+}
+
+.industria{
+    position: absolute;
+    left: 50px;
+    top: 470px;
+}
+
+.descricao{
+    padding: 40px;
+    position: absolute;
+    left: 20px;
+    top: 640px;
+}
+
+.high{
+    position: absolute;
+    top: 170px;
+    left: 420px;
+}
+
+.low{
+    position: absolute;
+    top: 270px;
+    left: 420px;
 }
 
 .log-out{
@@ -61,7 +192,24 @@ html{
     background-color: #f0f0f0;
 }
 
+.news-break{
+    margin-top: 30px;
+}
+
+.news-content{
+    margin-top: 30px;
+}
+
+.news{
+    padding: 30px 40px;
+    width: 750px;
+    background-color: #212121;
+    position: relative;
+    top: 1300px;
+    left: -40px;
+}
+
 .news-image{
-    width: 650px;
+    width: 550px;
     height: auto;
 }
