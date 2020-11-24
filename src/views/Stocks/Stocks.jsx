@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
 
+import { ListGroup } from 'react-bootstrap';
 import "./styles.css";
 export default class Stocks extends Component {
   constructor(props) {
@@ -19,12 +20,38 @@ export default class Stocks extends Component {
       description: "",
       profit_margins: "",
       industry: "",
+      list_stocks: []
     };
 
     this.handleChange = this.handleChange.bind(this);
 
     this.search = this.search.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
+
+  componentDidMount(){
+    const popular = {
+        method: 'GET',
+        url: 'https://yahoo-finance-low-latency.p.rapidapi.com/ws/screeners/v1/finance/screener/predefined/saved',
+        params: {scrIds: 'day_gainers', count: '5'},
+        headers: {
+            'x-rapidapi-key': 'a9bb09d058msh685a37cdd810d4fp1bca9ajsnefe368829089',
+            'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
+        }
+    }
+
+    axios.request(popular)
+    .then((response) => {
+        var bestStocks = response.data.finance.result[0].quotes
+
+        this.setState({
+            list_stocks: bestStocks
+        })
+        
+      }).catch(function (error) {
+          console.error(error);
+      });
+    }
 
   render() {
     var stockinfo = this.state.list;
@@ -49,49 +76,54 @@ export default class Stocks extends Component {
 
     var infolist = stockinfo.map((stock) => {
       return (
-        <p key={stock.symbol} className="info-data">
+        <div key={stock.symbol} className="info-data">
           {" "}
-          Ticker: <br /> {stock.symbol}
-          <br />
-          <br />
-          Company: <br /> {stock.shortName}
-          <br />
-        </p>
+          <h4 className="company-symbol">{stock.symbol}</h4>
+          <h4 className="company-name">{stock.shortName}</h4>
+          
+        </div>
       );
     });
 
     var stockdit = stockinfo.map((stock) => {
       return (
-        <p key={stock.regularMarketPrice} className="dit-data">
+        <div key={stock.regularMarketPrice} className="dit-data">
           {" "}
-          <p>
-            Price: <br /> {stock.regularMarketPrice} {stock.financialCurrency}
-          </p>
-          <p>
-            52-week low: <br /> {stock.fiftyTwoWeekLow}{" "}
-            {stock.financialCurrency}
-          </p>
-          <p>
-            52-week high: <br /> {stock.fiftyTwoWeekHigh}{" "}
-            {stock.financialCurrency}
-          </p>
-        </p>
+          <div className="stock-price">
+            <h4 className="price-title">Price:</h4> 
+            <p className="price-text">{stock.regularMarketPrice} {stock.financialCurrency}</p>
+          </div>
+          <div className="low">
+            <h5 className="low-title">52-week low:</h5> 
+            <p className="low-text">{stock.fiftyTwoWeekLow}{" "}{stock.financialCurrency}</p>
+          </div>
+          <div className="high">
+            <h5 className="high-title">52-week high:</h5>
+            <p className="high-text">{stock.fiftyTwoWeekHigh}{" "}{stock.financialCurrency}</p>
+          </div>
+        </div>
       );
     });
     var regularmarket = stockinfo.map((stock) => {
       return (
-        <p key={stock.regularMarketDayOpen} className="regular-data">
+        <div key={stock.regularMarketDayOpen} className="regular-data">
           {" "}
-          <p>
-            Open: <br /> {stock.regularMarketOpen} {stock.financialCurrency}
-          </p>
-          <p>
-            Volume: <br /> {stock.regularMarketVolume}
-          </p>
-          <p>
-            Mkt Cap: <br /> {stock.marketCap}
-          </p>
-        </p>
+          <div className="open">
+            <h4 className="open-title">Open:</h4> 
+             
+            <p className="price-text">{stock.regularMarketOpen} {stock.financialCurrency}</p>
+          </div>
+          <div className="volume">
+            <h4 className="volume-title">Volume:</h4> 
+             
+            <p className="volume-text">{stock.regularMarketVolume}</p>
+          </div>
+          <div className="market-cap">
+            <h4 className="market-cap-title">Mkt Cap:</h4> 
+             
+            <p className="market-cap-text">{stock.marketCap}</p>
+          </div>
+        </div>
       );
     });
 
@@ -106,16 +138,29 @@ export default class Stocks extends Component {
         <div className="news-content">
           <hr className="hr" />
           <h3 className="news-title">{titulo}</h3>
-          <br />
+          <br/>
           <a href={link} className="link-news">
             <img src={imagem} className="news-image"></img>
           </a>
-          <br />
-          <br />
+          <br/>
+          <br/>
           <p className="news-text">{resumo}</p>
         </div>
       );
     });
+
+    var listItens = this.state.list_stocks.map((stock) => {
+      return(
+          <ListGroup.Item className="item-content">
+              <h4 className="title" >{stock.symbol}</h4>
+              <p className="description" >{stock.longName}</p>
+              <p className="price-now-stocks">
+                  Now: 
+                  <p className="price">{stock.regularMarketPrice}</p>
+              </p>
+          </ListGroup.Item>
+        )
+    })
 
     return (
       <div className="container">
@@ -128,7 +173,7 @@ export default class Stocks extends Component {
             <label htmlFor="" className="labels">
               Search for stock
             </label>
-            <br />
+            
             <input
               className="form-control"
               name="stock"
@@ -184,26 +229,47 @@ export default class Stocks extends Component {
             />
           </div>
         </div>
+      <div className="second-content">
+        <div className="trending">
+              <h1 className="title-page">
+                  Trending Stocks
+              </h1>
+              <ListGroup className="list-stocks">
+                  {listItens}
+                  
+              </ListGroup>
+          </div>
 
-        <div className="information">
-          {" "}
-          {infolist}
-          {stockdit}
-          {regularmarket}
-          <p className="fechamento">
-            Previsão de fechamento: <br /> {this.state.previsaoDeFechamento}
-          </p>
-          <p>Margem de Lucro: {this.state.profit_margins}</p>
-          <p className="industria">
-            Indústria da empresa: <br /> {this.state.industry}
-          </p>
-          <p className="descricao">
-            Descrição da empresa: <br /> {this.state.description}
-          </p>
-          <br />
-          <h2>Notícias relacionadas: </h2>
-          {liNoticias}
-        </div>
+          <div className="information">
+            {" "}
+            {infolist}
+            {stockdit}
+            {regularmarket}
+            <div className="fechamento">
+              <h5 className="fechamento-title">Previsão de fechamento:</h5> 
+              
+              <p className="fechamento-text">{this.state.previsaoDeFechamento}</p>
+            </div>
+            <div className="lucro">
+              <h5 className="lucro-title">Margem de Lucro:</h5> 
+              <p className="lucro-text">{this.state.profit_margins}</p>
+            </div>
+            <div className="industria">
+              <h5 className="industry-title">Indústria da empresa:</h5> 
+              <p className="industry-text">{this.state.industry}</p>
+            </div>
+            <div className="descricao">
+              <hr className="hr"/>
+              <h5 className="descricao-title">Descrição da empresa:</h5> 
+              <p className="descricao-text">{this.state.description}</p>
+            </div>
+            <div className="news">
+              <h2 className="news-break">Notícias relacionadas: </h2>
+              {liNoticias}
+            </div>
+          </div>
+      </div>
+        
       </div>
     );
   }
