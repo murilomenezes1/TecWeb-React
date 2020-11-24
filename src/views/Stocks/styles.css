@@ -90,13 +90,13 @@ html{
 
 .company-symbol, .company-name, .open-title, .fechamento-title, .volume-title, 
 .market-cap-title, .high-title, .low-title, .price-title, .lucro-title, 
-.descricao-title, .industry-title, .forward_pe-title, .news-title{
+.descricao-title, .industry-title, .forward_pe-title, .news-title, .link-title{
     font-weight: bold;
 }
 
 .company-symbol, .company-name, .open-text, .fechamento-text, .volume-text, 
 .market-cap-text, .high-text, .low-text, .price-text, .lucro-text, 
-.descricao-text, .industry-text, .forward_pe-text,.news-text{
+.descricao-text, .industry-text, .forward_pe-text,.news-text, .link-text{
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -155,7 +155,7 @@ html{
 .lucro{
     position: absolute;
     left: 420px;
-    top: 570px;
+    top: 670px;
 }
 
 .industria{
@@ -164,18 +164,24 @@ html{
     top: 470px;
 }
 
+.link{
+    position: absolute;
+    left: 50px;
+    top: 570px;
+}
+
 .forward_pe{
     padding: 40px;
     position: absolute;
     left: 20px;
-    top: 530px;
+    top: 630px;
 }
 
 .descricao{
     padding: 40px;
     position: absolute;
     left: 20px;
-    top: 640px;
+    top: 740px;
 }
 
 .high{
