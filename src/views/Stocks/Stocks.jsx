@@ -26,6 +26,7 @@ export default class Stocks extends Component {
       list_stocks: [],
       forward_pe: "",
       link_empresa: "",
+      market: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -99,11 +100,11 @@ export default class Stocks extends Component {
             <p className="price-text">{stock.regularMarketPrice} {stock.financialCurrency}</p>
           </div>
           <div className="low">
-            <h5 className="low-title">52-week low:</h5> 
+            <h5 className="low-title">52-week Low:</h5> 
             <p className="low-text">{stock.fiftyTwoWeekLow}{" "}{stock.financialCurrency}</p>
           </div>
           <div className="high">
-            <h5 className="high-title">52-week high:</h5>
+            <h5 className="high-title">52-week High:</h5>
             <p className="high-text">{stock.fiftyTwoWeekHigh}{" "}{stock.financialCurrency}</p>
           </div>
         </div>
@@ -124,7 +125,7 @@ export default class Stocks extends Component {
             <p className="volume-text">{stock.regularMarketVolume}</p>
           </div>
           <div className="market-cap">
-            <h4 className="market-cap-title">Mkt Cap:</h4> 
+            <h4 className="market-cap-title">Market Cap:</h4> 
              
             <p className="market-cap-text">{stock.marketCap}</p>
           </div>
@@ -262,6 +263,9 @@ export default class Stocks extends Component {
             <div className="forward_pe">
               <h5 className="forward_pe-title">Forward P/E:</h5> 
               <p className="forward_pe-text">{this.state.forward_pe}</p>
+            </div>
+            <div className="market">
+              <h4 className="market-title">{this.state.market}</h4> 
             </div>
             <div className="industria">
               <h5 className="industry-title">Indústria da empresa:</h5> 
@@ -464,6 +468,18 @@ export default class Stocks extends Component {
       .catch(function (error) {
         console.error(error);
       });
+
+    axios
+    .request(options)
+    .then((response) => {
+      if (Math.floor(response.status / 100) === 2) {
+        this.setState({ market: response.data.quoteResponse.result[0].fullExchangeName});
+        return;
+      }
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 
     axios
     .request(options)
