@@ -26,3 +26,10 @@ test("should render label", () => {
     const label = screen.getByText("Search for stock");
     expect(label).toBeInTheDocument();
 })
+
+test("should have trending stocks", () =>{
+    render(<Stocks/>)
+
+    const trending = screen.getByText("Trending Stocks");
+    expect(trending).toBeInTheDocument();
+})

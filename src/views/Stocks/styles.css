@@ -30,13 +30,22 @@ html{
     margin-right: 100px;
 }
 
+.link-text{
+    color: #2c82c9!important;
+}
+
 .list-stocks{
     border-radius: 8px;
     margin-top: 20px;
     background: #212121;
 }
 
+a{
+    cursor: pointer;
+}
+
 .item-content{
+    cursor: pointer;
     position: relative;
     display: flex!important;
     flex-direction: column!important;
@@ -44,6 +53,12 @@ html{
     justify-content: flex-start!important;
     height: 90px;
     background-color: #212121!important;
+    transition: 0.8s!important;
+}
+
+.item-content:hover{
+    background-color: #121212!important;
+    color: #fff!important;
 }
 
 .price-now-stocks{

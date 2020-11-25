@@ -3,20 +3,28 @@
 }
 
 .list{
+    width: 90%;
     border-radius: 8px;
     margin-top: 50px;
     background: #121212;
 }
 
 .item{
+    cursor: pointer;
     position: relative;
     display: flex!important;
     flex-direction: column!important;
     align-items: flex-start!important;
     justify-content: flex-start!important;
     height: 90px;
-    background-color: #121212!important;
+    background-color: #212121!important;
     border-color: #212121!important;
+    transition: 0.8s!important;
+}
+
+.item:hover{
+    background-color: #121212!important;
+    color: #fff!important;
 }
 
 .title{
