@@ -42,3 +42,11 @@ test("should have info Price/Earnings of the stock", () =>{
     expect(trending).toBeInTheDocument();
 })
 
+
+test("should have info profit margin of the stock", () =>{
+    render(<Stocks/>)
+
+    const trending = screen.getByText("Margem de Lucro:");
+    expect(trending).toBeInTheDocument();
+})
+
