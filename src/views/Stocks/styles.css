@@ -118,6 +118,14 @@ a{
     margin-left: 10px;
 }
 
+.market-title{
+    color: #2c82c9;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
 .descricao-text, .news-text{
     line-height: 28px;
 }
@@ -215,6 +223,12 @@ a{
     position: absolute;
     top: 270px;
     left: 420px;
+}
+
+.market{
+    position: absolute;
+    top: 83px;
+    left: 400px;
 }
 
 .log-out{
