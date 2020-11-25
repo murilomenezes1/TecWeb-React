@@ -105,13 +105,13 @@ a{
 
 .company-symbol, .company-name, .open-title, .fechamento-title, .volume-title, 
 .market-cap-title, .high-title, .low-title, .price-title, .lucro-title, 
-.descricao-title, .industry-title, .forward_pe-title, .news-title, .link-title{
+.descricao-title, .industry-title, .forward_pe-title, .news-title, .link-title, .float-title{
     font-weight: bold;
 }
 
 .company-symbol, .company-name, .open-text, .fechamento-text, .volume-text, 
 .market-cap-text, .high-text, .low-text, .price-text, .lucro-text, 
-.descricao-text, .industry-text, .forward_pe-text,.news-text, .link-text{
+.descricao-text, .industry-text, .forward_pe-text,.news-text, .link-text, .float-text{
     color: #f0f0f0;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -167,6 +167,12 @@ a{
     position: absolute;
     left: 420px;
     top: 470px;
+}
+
+.float-shares{
+    position: absolute;
+    left: 420px;
+    top: 570px;
 }
 
 .fechamento{
