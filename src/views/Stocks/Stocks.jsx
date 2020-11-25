@@ -26,6 +26,7 @@ export default class Stocks extends Component {
       list_stocks: [],
       forward_pe: "",
       link_empresa: "",
+      floatShares: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -127,6 +128,11 @@ export default class Stocks extends Component {
             <h4 className="market-cap-title">Mkt Cap:</h4> 
              
             <p className="market-cap-text">{stock.marketCap}</p>
+          </div>
+          <div className="float-shares">
+            <h4 className="float-title">Float Shares:</h4>
+
+            <p className="float-text">{this.state.floatShares}</p>
           </div>
         </div>
       );
