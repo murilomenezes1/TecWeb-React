@@ -180,7 +180,7 @@ export default class Stocks extends Component {
         </header>
 
         <div className="sub-content">
-          <div className="form-group form-npm startcontainer">
+          <div className="form-group form-container">
             <label htmlFor="" className="labels">
               Search for stock
             </label>
