@@ -33,3 +33,12 @@ test("should have trending stocks", () =>{
     const trending = screen.getByText("Trending Stocks");
     expect(trending).toBeInTheDocument();
 })
+
+
+test("should have info Price/Earnings of the stock", () =>{
+    render(<Stocks/>)
+
+    const trending = screen.getByText("Forward P/E:");
+    expect(trending).toBeInTheDocument();
+})
+
