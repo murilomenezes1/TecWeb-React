@@ -4,6 +4,8 @@ import axios from "axios";
 import { Line } from "react-chartjs-2";
 import { Link } from 'react-router-dom';
 
+
+
 import history from '../../history';
 
 import { ListGroup } from 'react-bootstrap';
@@ -174,6 +176,7 @@ export default class Stocks extends Component {
           </ListGroup.Item>
         )
     })
+
     
     
    
