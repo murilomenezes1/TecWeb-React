@@ -28,6 +28,7 @@ export default class Stocks extends Component {
       link_empresa: "",
       market: "",
       floatShares: "",
+      acao: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -173,6 +174,9 @@ export default class Stocks extends Component {
           </ListGroup.Item>
         )
     })
+    
+    
+   
 
     return (
       <div className="container">
@@ -295,6 +299,11 @@ export default class Stocks extends Component {
               <h2 className="news-break">Notícias relacionadas: </h2>
               {liNoticias}
             </div>
+            <div className="acao_similar">
+              <h5 className="acao_similar-title">Ação similar: </h5>
+              <p className="acao_similar-text">{this.state.acao}</p>
+        
+            </div>
           </div>
       </div>
         
@@ -366,9 +375,31 @@ export default class Stocks extends Component {
         "x-rapidapi-host": "yahoo-finance-low-latency.p.rapidapi.com",
       },
     };
-
     
+    const similar = {
+      method: "GET",
+      url: "https://yahoo-finance-low-latency.p.rapidapi.com/v6/finance/recommendationsbysymbol/"+
+      this.state.stock,
+      headers: {
+        "x-rapidapi-key": "a189d94715msh94688240afe7d21p18a442jsn5712d79e456d",
+        "x-rapidapi-host": "yahoo-finance-low-latency.p.rapidapi.com"
+      }
+    };
+    
+    axios.request(similar)
+    .then((response) =>{
+    // console.log("poo")
+    // console.log(response.data.finance.result[0].recommendedSymbols[0].symbol)
+      if (Math.floor(response.status / 100) === 2) {
+        this.setState({acao:response.data.finance.result[0].recommendedSymbols[0].symbol,
+        });
+        return;
 
+     
+    } })
+    .catch(function (error) {
+      console.error(error);
+    });
     
 
     axios
