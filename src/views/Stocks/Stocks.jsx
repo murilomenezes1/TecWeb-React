@@ -31,6 +31,8 @@ export default class Stocks extends Component {
       market: "",
       floatShares: "",
       acao: "",
+      pais: "",
+      employees: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -137,6 +139,16 @@ export default class Stocks extends Component {
             <h4 className="float-title">Float Shares:</h4>
 
             <p className="float-text">{this.state.floatShares}</p>
+          </div>
+          <div className="employees">
+            <h4 className="employees-title">Funcionários:</h4>
+
+            <p className="employees-text">{this.state.employees}</p>
+          </div>
+          <div className="pais">
+            <h4 className="pais-title">País de origem:</h4>
+
+            <p className="pais-text">{this.state.pais}</p>
           </div>
         </div>
       );
@@ -278,7 +290,7 @@ export default class Stocks extends Component {
               <p className="forward_pe-text">{this.state.forward_pe}</p>
             </div>
             <div className="market">
-              <h4 className="market-title">{this.state.market}</h4> 
+              <h5 className="market-title">{this.state.market}</h5> 
             </div>
             <div className="industria">
               <h5 className="industry-title">Indústria da empresa:</h5> 
@@ -591,6 +603,23 @@ export default class Stocks extends Component {
           this.setState({
             industry:
               response.data.quoteSummary.result[0].assetProfile.industry,
+          });
+          return;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+      axios
+      .request(description)
+      .then((response) => {
+        if (Math.floor(response.status / 100) === 2) {
+          this.setState({
+            employees:
+              response.data.quoteSummary.result[0].assetProfile.fullTimeEmployees,
+            pais:
+            response.data.quoteSummary.result[0].assetProfile.country,
           });
           return;
         }
