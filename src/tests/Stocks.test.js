@@ -105,3 +105,26 @@ it('nome do teste', async () => {
 //     expect(trending).toBeInTheDocument();
 // })
 
+
+// test("should have info float shares of the stock", () => {
+//     render(<Stocks />)
+
+//     const fltShares = screen.getByText("Float Shares:");
+//     expect(fltShares).toBeInTheDocument();
+// })
+
+
+// test("should have info employees of the stock", () => {
+//     render(<Stocks />)
+
+//     const employees = screen.getByText("Funcionários:");
+//     expect(employees).toBeInTheDocument();
+// })
+
+
+// test("should have info country of the stock", () => {
+//     render(<Stocks />)
+
+//     const country = screen.getByText("País de origem:");
+//     expect(country).toBeInTheDocument();
+// })
