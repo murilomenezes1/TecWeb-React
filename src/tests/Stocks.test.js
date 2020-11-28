@@ -44,23 +44,56 @@ jest.mock("axios", () => ({
 // Reseta o render do component após cada teste
 afterEach(cleanup);
 
-it("nome do teste", async () => {
+it("teste symbol", async () => {
   const { getByTestId, getByText } = render(<Stocks />);
   // ...
   // Confere resultado. Deve esperar a “resposta” do mock antes de
   //verificar qualquer atualização na tela
   await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(1));
+
   const teste1 = getByText(/symbol/i);
   expect(teste1).toBeInTheDocument();
+});
+
+it("teste description", async () => {
+  const { getByTestId, getByText } = render(<Stocks />);
+  // ...
+  // Confere resultado. Deve esperar a “resposta” do mock antes de
+  //verificar qualquer atualização na tela
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(2));
 
   const teste2 = getByText(/longName/i);
   expect(teste2).toBeInTheDocument();
+});
+
+it("teste regularMarketPrice", async () => {
+  const { getByTestId, getByText } = render(<Stocks />);
+  // ...
+  // Confere resultado. Deve esperar a “resposta” do mock antes de
+  //verificar qualquer atualização na tela
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(3));
 
   const teste3 = getByText(/regular/i);
   expect(teste3).toBeInTheDocument();
+});
+
+it("teste marketCap", async () => {
+  const { getByTestId, getByText } = render(<Stocks />);
+  // ...
+  // Confere resultado. Deve esperar a “resposta” do mock antes de
+  //verificar qualquer atualização na tela
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(4));
 
   const teste4 = getByText(/market/i);
   expect(teste4).toBeInTheDocument();
+});
+
+it("teste regularMarketVolume", async () => {
+  const { getByTestId, getByText } = render(<Stocks />);
+  // ...
+  // Confere resultado. Deve esperar a “resposta” do mock antes de
+  //verificar qualquer atualização na tela
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(5));
 
   const teste5 = getByText(/Volume/i);
   expect(teste5).toBeInTheDocument();
