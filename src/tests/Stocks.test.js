@@ -29,6 +29,7 @@ jest.mock("axios", () => ({
                 longName: "longName",
                 regularMarketPrice: "regular",
                 marketCap: "market",
+                regularMarketVolume: "Volume",
               },
             ],
           },
@@ -60,6 +61,9 @@ it("nome do teste", async () => {
 
   const teste4 = getByText(/market/i);
   expect(teste4).toBeInTheDocument();
+
+  const teste5 = getByText(/Volume/i);
+  expect(teste5).toBeInTheDocument();
 });
 
 // it("should render text", () => {
