@@ -21,7 +21,7 @@ html {
 .second-content {
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: center;
     margin-top: 2rem;
 }
 
@@ -88,7 +88,14 @@ a {
 .search-input {
     width: 100%;
     height: 35px;
-    /* box-sizing: border-box; */
+    background-color: #121212 !important;
+    border: 0 !important;
+    color: #f0f0f0 !important;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
 .search-stock {
@@ -129,8 +136,6 @@ a {
     padding: 0 1.5rem;
 }
 
-.company-symbol,
-.company-name,
 .open-text,
 .fechamento-text,
 .volume-text,
@@ -172,7 +177,7 @@ a {
 
 .log-out {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .hr {
@@ -236,9 +241,10 @@ a {
 }
 .information-table table tr th {
     padding-top: 0.5rem;
+    font-size: 22px;
 }
 .information-table table tr td {
-    font-size: 1.3rem;
+    font-size: 18px;
     font-weight: 500;
     opacity: 0.7;
 }
