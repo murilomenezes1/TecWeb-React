@@ -12,7 +12,6 @@ html {
 
 .line {
     margin-top: 30px;
-    /* position: relative; */
     width: 800px;
     margin-left: 30px;
     background: #212121;
@@ -43,20 +42,13 @@ html {
 a {
     cursor: pointer;
 }
-.list-group-inner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 .item-content {
     cursor: pointer;
-    /* position: relative; */
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    height: 90px;
+    /* height: 90px; */
     background-color: #212121 !important;
     transition: 0.8s !important;
 }
@@ -68,7 +60,6 @@ a {
 
 .price-now-stocks {
     font-size: 16px;
-    /* position: absolute; */
     top: 20px;
     left: 75%;
     color: #fff;
@@ -98,7 +89,6 @@ a {
 }
 
 .information {
-    /* position: relative; */
     margin-top: 50px;
     font-size: 16px;
     width: 750px;
@@ -170,7 +160,6 @@ a {
 
 .company-symbol {
     font-size: 32px;
-    /* position: relative; */
     top: 0;
     left: 0px;
     color: #2c82c9;
@@ -178,110 +167,92 @@ a {
 
 .company-name {
     font-size: 18px;
-    /* position: relative; */
     top: 0;
     left: 10px;
 }
 
 .stock-price {
-    /* position: absolute; */
     left: 50px;
     top: 170px;
 }
 
 .open {
-    /* position: absolute; */
     left: 50px;
     top: 270px;
 }
 
 .volume {
-    /* position: absolute; */
     left: 420px;
     top: 370px;
 }
 
 .market-cap {
-    /* position: absolute; */
     left: 420px;
     top: 470px;
 }
 
 .float-shares {
-    /* position: absolute; */
     left: 420px;
     top: 570px;
 }
 
 .fechamento {
-    /* position: absolute; */
     left: 50px;
     top: 370px;
 }
 
 .lucro {
-    /* position: absolute; */
     left: 420px;
     top: 670px;
 }
 
 .industria {
-    /* position: absolute; */
     left: 50px;
     top: 470px;
 }
 
 .link {
-    /* position: absolute; */
     left: 50px;
     top: 570px;
 }
 
 .forward_pe {
-    /* position: absolute; */
     left: 50px;
     top: 670px;
 }
 
 .acao_similar {
-    /* position: absolute; */
     left: 50px;
     top: 770px;
 }
 
 .employees {
-    /* position: absolute; */
     left: 420px;
     top: 770px;
 }
 
 .pais {
-    /* position: absolute; */
     left: 50px;
     top: 870px;
 }
 
 .descricao {
     padding: 40px;
-    /* position: absolute; */
     left: 20px;
     top: 940px;
 }
 
 .high {
-    /* position: absolute; */
     top: 170px;
     left: 420px;
 }
 
 .low {
-    /* position: absolute; */
     top: 270px;
     left: 420px;
 }
 
 .market {
-    /* position: absolute; */
     top: 83px;
     left: 400px;
 }
@@ -314,6 +285,19 @@ a {
 .news-image {
     width: 550px;
     height: auto;
+}
+
+.list-group-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.list-group-inner .description {
+    margin: 0;
+}
+.list-group-inner .price {
+    margin-left: 1rem;
 }
 
 .information-table {
