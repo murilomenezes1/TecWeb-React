@@ -47,7 +47,7 @@ export default class Stocks extends Component {
             params: { scrIds: 'day_gainers', count: '5' },
             headers: {
                 'x-rapidapi-key':
-                    'a9bb09d058msh685a37cdd810d4fp1bca9ajsnefe368829089',
+                    '65ff027d5amshf60ee263329666bp1cb1f9jsnad077b89cf91',
                 'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
             }
         };
@@ -147,7 +147,7 @@ export default class Stocks extends Component {
                 this.state.stock,
             headers: {
                 'x-rapidapi-key':
-                    'a189d94715msh94688240afe7d21p18a442jsn5712d79e456d',
+                    '8538735e6dmshbf1ef9d8c671ad5p12d290jsn69c781f588b2',
                 'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
             }
         };
@@ -159,7 +159,7 @@ export default class Stocks extends Component {
                 this.state.stock,
             headers: {
                 'x-rapidapi-key':
-                    'a189d94715msh94688240afe7d21p18a442jsn5712d79e456d',
+                    '65ff027d5amshf60ee263329666bp1cb1f9jsnad077b89cf91',
                 'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
             }
         };
@@ -487,7 +487,6 @@ export default class Stocks extends Component {
                     <tr>
                         <th>Open:</th>
                         <th>Volume:</th>
-                        <th>Market Cap:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -497,19 +496,28 @@ export default class Stocks extends Component {
                             {stockinfo[0].financialCurrency}
                         </td>
                         <td>{stockinfo[0].regularMarketVolume}</td>
-                        <td>{stockinfo[0].marketCap}</td>
                     </tr>
                 </tbody>
                 <thead className='columns'>
                     <tr>
+                        <th>Market Cap:</th>
                         <th>Float Shares:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{stockinfo[0].marketCap}</td>
+                        <td>{this.state.floatShares}</td>
+                    </tr>
+                </tbody>
+                <thead className='columns'>
+                    <tr>
                         <th>Funcionários:</th>
                         <th>País de origem:</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{this.state.floatShares}</td>
                         <td>{this.state.employees}</td>
                         <td>{this.state.pais}</td>
                     </tr>
@@ -526,6 +534,7 @@ export default class Stocks extends Component {
             // console.log('LINK ', link);
             return (
                 <div key={index} className='news-content'>
+                    <hr className='hr' />
                     <h3 className='news-title'>{titulo}</h3>
                     <br />
                     <a href={link} className='link-news'>
@@ -586,7 +595,7 @@ export default class Stocks extends Component {
                         </label>
 
                         <input
-                            className='form-control'
+                            className='search-input'
                             name='stock'
                             value={this.state.stock}
                             onChange={this.handleChange}
