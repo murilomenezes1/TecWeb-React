@@ -26,7 +26,7 @@ export default class Trending extends Component {
             params: { scrIds: 'day_gainers', count: '25' },
             headers: {
                 'x-rapidapi-key':
-                    'a9bb09d058msh685a37cdd810d4fp1bca9ajsnefe368829089',
+                    '65ff027d5amshf60ee263329666bp1cb1f9jsnad077b89cf91',
                 'x-rapidapi-host': 'yahoo-finance-low-latency.p.rapidapi.com'
             }
         };

@@ -25,19 +25,19 @@ export default class Signup extends Component {
                     <header>
                         <h1>stockMERN</h1>
                     </header>
-                    <div className="form-group">
+                    <div className="signup-form-group">
                         <label htmlFor="" className="labels-login">Username:{' '}</label>
                         <input
-                            className="form-control"
+                            className="signup-form-control"
                             name='username'
                             value={this.state.user.username}
                             onChange={this.handleChange}
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="signup-form-group">
                         <label htmlFor="" className="labels-login">Password:{' '}</label>
                         <input
-                            className="form-control"
+                            className="signup-form-control"
                             name='password'
                             value={this.state.user.password}
                             onChange={this.handleChange}

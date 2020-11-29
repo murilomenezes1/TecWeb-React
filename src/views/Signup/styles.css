@@ -12,9 +12,12 @@
     background: #212121;
 }
 
-.form-control{
-    width: 400px!important;
-    height: 35px!important;
+.signup-form-control{
+    width: 100%;
+    height: 35px;
+    background-color: #121212 !important;
+    border: 0 !important;
+    color: #f0f0f0 !important;
 }
 
 .sign-in-button, .sign-up-button{
