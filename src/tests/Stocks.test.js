@@ -30,6 +30,8 @@ jest.mock("axios", () => ({
                 regularMarketPrice: "regular",
                 marketCap: "market",
                 regularMarketVolume: "Volume",
+                link_empresa: "link",
+                acao: "Ação",
               },
             ],
           },
@@ -98,6 +100,29 @@ it("teste regularMarketVolume", async () => {
   const teste5 = getByText(/Volume/i);
   expect(teste5).toBeInTheDocument();
 });
+
+it("teste link_empresa", async () => {
+  const { getByTestId, getByText } = render(<Stocks />);
+  // ...
+  // Confere resultado. Deve esperar a “resposta” do mock antes de
+  //verificar qualquer atualização na tela
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(6));
+
+  const teste6 = getByText(/link/i);
+  expect(teste6).toBeInTheDocument();
+});
+
+it("teste acao", async () => {
+  const { getByTestId, getByText } = render(<Stocks />);
+  // ...
+  // Confere resultado. Deve esperar a “resposta” do mock antes de
+  //verificar qualquer atualização na tela
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(7));
+
+  const teste7 = getByText(/Ação/i);
+  expect(teste7).toBeInTheDocument();
+});
+
 
 // it("should render text", () => {
 //     const page = mount(<Stocks/>)
