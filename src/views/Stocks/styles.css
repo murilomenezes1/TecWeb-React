@@ -1,80 +1,85 @@
-html{
+html {
     height: 100%;
     background: #282c34;
 }
 
-.sub-content{
+.sub-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.line{
+.line {
     margin-top: 30px;
-    position: relative;
+    /* position: relative; */
     width: 800px;
     margin-left: 30px;
     background: #212121;
     border-radius: 4px;
 }
 
-.second-content{
+.second-content {
     display: flex;
     flex-direction: row;
 }
 
-.trending{
+.trending {
     padding: 30px;
     width: 500px;
     margin-right: 100px;
 }
 
-.link-text{
-    color: #2c82c9!important;
+.link-text {
+    color: #2c82c9 !important;
 }
 
-.list-stocks{
+.list-stocks {
     border-radius: 8px;
     margin-top: 20px;
     background: #212121;
 }
 
-a{
+a {
     cursor: pointer;
 }
-
-.item-content{
+.list-group-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.item-content {
     cursor: pointer;
-    position: relative;
-    display: flex!important;
-    flex-direction: column!important;
-    align-items: flex-start!important;
-    justify-content: flex-start!important;
+    /* position: relative; */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     height: 90px;
-    background-color: #212121!important;
-    transition: 0.8s!important;
+    background-color: #212121 !important;
+    transition: 0.8s !important;
 }
 
-.item-content:hover{
-    background-color: #121212!important;
-    color: #fff!important;
+.item-content:hover {
+    background-color: #121212 !important;
+    color: #fff !important;
 }
 
-.price-now-stocks{
+.price-now-stocks {
     font-size: 16px;
-    position: absolute;
+    /* position: absolute; */
     top: 20px;
     left: 75%;
     color: #fff;
 }
 
-.labels{
+.labels {
     font-size: 24px;
     margin-bottom: 30px;
 }
 
-.form-container{
+.form-container {
     border: 1px solid #010101;
     padding: 50px 40px;
     border-radius: 8px;
@@ -82,18 +87,18 @@ a{
     margin-right: 30px;
 }
 
-.form-control{
-    width: 400px!important;
-    height: 35px!important;
+.form-control {
+    width: 400px !important;
+    height: 35px !important;
 }
 
-.search-stock{
+.search-stock {
     width: 100%;
     margin-top: 20px;
 }
 
-.information{
-    position: relative;
+.information {
+    /* position: relative; */
     margin-top: 50px;
     font-size: 16px;
     width: 750px;
@@ -103,24 +108,54 @@ a{
     text-align: start;
 }
 
-.company-symbol, .company-name, .open-title, .fechamento-title, .volume-title, 
-.market-cap-title, .high-title, .low-title, .price-title, .lucro-title, 
-.descricao-title, .industry-title, .forward_pe-title, .news-title, .link-title,
- .float-title, .acao_similar-title, .pais-title, .employees-title{
+.company-symbol,
+.company-name,
+.open-title,
+.fechamento-title,
+.volume-title,
+.market-cap-title,
+.high-title,
+.low-title,
+.price-title,
+.lucro-title,
+.descricao-title,
+.industry-title,
+.forward_pe-title,
+.news-title,
+.link-title,
+.float-title,
+.acao_similar-title,
+.pais-title,
+.employees-title {
     font-weight: bold;
 }
 
-.company-symbol, .company-name, .open-text, .fechamento-text, .volume-text, 
-.market-cap-text, .high-text, .low-text, .price-text, .lucro-text, 
-.descricao-text, .industry-text, .forward_pe-text,.news-text, .link-text, 
-.float-text, .acao_similar-text, .pais-text, .employees-text{
+.company-symbol,
+.company-name,
+.open-text,
+.fechamento-text,
+.volume-text,
+.market-cap-text,
+.high-text,
+.low-text,
+.price-text,
+.lucro-text,
+.descricao-text,
+.industry-text,
+.forward_pe-text,
+.news-text,
+.link-text,
+.float-text,
+.acao_similar-text,
+.pais-text,
+.employees-text {
     color: #f0f0f0;
     margin-top: 10px;
     margin-bottom: 20px;
     margin-left: 10px;
 }
 
-.market-title{
+.market-title {
     color: #2c82c9;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -128,156 +163,202 @@ a{
     font-weight: bold;
 }
 
-.descricao-text, .news-text{
+.descricao-text,
+.news-text {
     line-height: 28px;
 }
 
-.company-symbol{
+.company-symbol {
     font-size: 32px;
-    position: relative;
+    /* position: relative; */
     top: 0;
     left: 0px;
     color: #2c82c9;
 }
 
-.company-name{
+.company-name {
     font-size: 18px;
-    position: relative;
+    /* position: relative; */
     top: 0;
     left: 10px;
 }
 
-.stock-price{
-    position: absolute;
+.stock-price {
+    /* position: absolute; */
     left: 50px;
     top: 170px;
 }
 
-.open{
-    position: absolute;
+.open {
+    /* position: absolute; */
     left: 50px;
     top: 270px;
 }
 
-.volume{
-    position: absolute;
+.volume {
+    /* position: absolute; */
     left: 420px;
     top: 370px;
 }
 
-.market-cap{
-    position: absolute;
+.market-cap {
+    /* position: absolute; */
     left: 420px;
     top: 470px;
 }
 
-.float-shares{
-    position: absolute;
+.float-shares {
+    /* position: absolute; */
     left: 420px;
     top: 570px;
 }
 
-.fechamento{
-    position: absolute;
+.fechamento {
+    /* position: absolute; */
     left: 50px;
     top: 370px;
 }
 
-.lucro{
-    position: absolute;
+.lucro {
+    /* position: absolute; */
     left: 420px;
     top: 670px;
 }
 
-.industria{
-    position: absolute;
+.industria {
+    /* position: absolute; */
     left: 50px;
     top: 470px;
 }
 
-.link{
-    position: absolute;
+.link {
+    /* position: absolute; */
     left: 50px;
     top: 570px;
 }
 
-.forward_pe{
-    position: absolute;
+.forward_pe {
+    /* position: absolute; */
     left: 50px;
     top: 670px;
 }
 
-.acao_similar{
-    position: absolute;
+.acao_similar {
+    /* position: absolute; */
     left: 50px;
     top: 770px;
-
 }
 
-.employees{
-    position: absolute;
+.employees {
+    /* position: absolute; */
     left: 420px;
     top: 770px;
 }
 
-.pais{
-    position: absolute;
+.pais {
+    /* position: absolute; */
     left: 50px;
     top: 870px;
 }
 
-.descricao{
+.descricao {
     padding: 40px;
-    position: absolute;
+    /* position: absolute; */
     left: 20px;
     top: 940px;
 }
 
-.high{
-    position: absolute;
+.high {
+    /* position: absolute; */
     top: 170px;
     left: 420px;
 }
 
-.low{
-    position: absolute;
+.low {
+    /* position: absolute; */
     top: 270px;
     left: 420px;
 }
 
-.market{
-    position: absolute;
+.market {
+    /* position: absolute; */
     top: 83px;
     left: 400px;
 }
 
-.log-out{
+.log-out {
     width: 100%;
     margin-top: 40px;
 }
 
-.hr{
+.hr {
     background-color: #f0f0f0;
 }
 
-.news-break{
+.news-break {
     margin-top: 30px;
 }
 
-.news-content{
+.news-content {
     margin-top: 30px;
 }
 
-.news{
-    padding: 30px 40px;
-    width: 750px;
+.news {
+    /* padding: 30px 40px; */
+    /* width: 750px; */
     background-color: #212121;
-    position: relative;
-    top: 1500px;
-    left: -40px;
+    /* top: 1500px;
+    left: -40px; */
 }
 
-.news-image{
+.news-image {
     width: 550px;
     height: auto;
+}
+
+.information-table {
+    margin-top: 3rem;
+    background-color: #212121;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.information-table table {
+    width: 100%;
+    text-align: left;
+    margin: 1rem;
+}
+.information-table table tr th {
+    padding-top: 0.5rem;
+}
+.information-table table tr td {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.7;
+}
+.information-table .common-text-group {
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    text-align: left;
+}
+
+.information-table .common-text-group .text {
+    padding: 0 1rem;
+}
+.information-table .common-text-group .link-text {
+    margin: 0;
+}
+
+.information-table .title {
+    color: #f0f0f0;
+    font-weight: bold;
+}
+.information-table .text {
+    color: #f0f0f0;
+    text-align: left;
+    font-size: 20px;
+    padding: 1.5rem;
+    font-weight: 600;
 }

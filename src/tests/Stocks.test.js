@@ -123,6 +123,22 @@ it("teste acao", async () => {
   expect(teste7).toBeInTheDocument();
 });
 
+it("teste short name", async () => {
+  const { getByText } = render(<Stocks />);
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(8));
+
+  const teste8 = getByText(/Exchange:/i);
+  expect(teste8).toBeInTheDocument();
+});
+it("teste timezone name", async () => {
+  const { getByText } = render(<Stocks />);
+
+  await waitFor(() => expect(axios.request).toHaveBeenCalledTimes(9));
+
+  const teste9 = getByText(/Exchange TZ Name:/i);
+  expect(teste9).toBeInTheDocument();
+});
+
 
 // it("should render text", () => {
 //     const page = mount(<Stocks/>)
